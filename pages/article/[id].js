@@ -30,7 +30,12 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async () => {
-    const res = await fetch(`${server}/api/articles`)
+    const res = await fetch(`${server}/api/articles`, {
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    })
 
     const articles = await res.json();
 
